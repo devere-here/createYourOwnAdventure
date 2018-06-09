@@ -1,7 +1,7 @@
 'use strict'
 
-const db = require('../server/db')
-const {User, AdventureNode} = require('../server/db/models')
+const db = require('../server/db'),
+  {User, Option, Situation} = require('../server/db/models')
 
 const verbs = ['attach',
   "embarrass",
@@ -42,9 +42,9 @@ const verbs = ['attach',
   "attack",
   "burn",
   "admire",
-  "raise"]
+  "raise"],
 
-const nouns = ["cap",
+  nouns = ["cap",
   "hole",
   "poison",
   "mailbox",
@@ -83,9 +83,9 @@ const nouns = ["cap",
   "cow",
   "skate",
   "money",
-  "feeling"]
+  "feeling"],
 
-const adverbs = [
+  adverbs = [
   "throughly",
 "twice",
 "virtually",
@@ -125,14 +125,13 @@ const adverbs = [
 "sloppily",
 "joyously",
 "weakly",
-"seemingly"
-]
+"seemingly"],
 
-const situations = [
+  situations = [
   `You're alone at night in a field. Suddenly you see a dark shadow in the distance`,
 
   `The shadow has gotten bigger. Whatever it is, it seems to be coming straight towards you`,
-  `The shadow seems to be going away from you. You must have scared it off`
+  `The shadow seems to be going away from you. You must have scared it off`,
   `The shadow seems pleased. It brought its friends. There are now 3 shadows in the distance`,
   `The shadow is confused? You can hear it say 'What!?'`,
 
@@ -247,20 +246,26 @@ const situations = [
   `The shadow is even more confused. It cries because it realizes it lives in a world that it can't possibly understand`
 ]
 
-function CreateAdventureNode(situation, image) {
+function CreateSituation(situation) {
   this.situation = situation
-  this.image = image
 }
 
 function CreateOption(adverb, verb, noun) {
-  this.phrase = `${adverb} ${verb} ${noun}`
+  this.option = `${adverb} ${verb} ${noun}`
 }
 
 
-let adventureNodeArray = []
+let situationArray,
+  optionArray = []
 
-for (let i = 0; i < 341; i++){
-  adventureNodeArray.push(new CreateAdventureNode(i))
+situationArray = situations.map(situation => new CreateSituation(situation))
+
+for (let i = 0; i < 150; i++){
+  let adverbIndex = Math.floor(Math.random() * 40),
+    verbIndex = Math.floor(Math.random() * 40),
+    nounIndex = Math.floor(Math.random() * 40)
+
+  optionArray.push(new CreateOption(adverbs[adverbIndex], verbs[verbIndex], nouns[nounIndex]))
 }
 
 
@@ -282,13 +287,16 @@ async function seed() {
   console.log('db synced!')
   // Whoa! Because we `await` the promise that db.sync returns, the next line will not be
   // executed until that promise resolves!
+
   const users = await Promise.all([
     User.create({email: 'cody@email.com', password: '123'}),
     User.create({email: 'murphy@email.com', password: '123'})
   ])
-  const adventureNodes = await Promise.all([
-    AdventureNode.create({situation: 'a situation', optionA: 'a', optionB: 'b', optionC: 'c', optionD: 'd'})
-  ])
+
+  await Promise.all(situationArray.map(situation => Situation.create(situation)))
+
+  await Promise.all(optionArray.map(option => Option.create(option)))
+
   // Wowzers! We can even `await` on the right-hand side of the assignment operator
   // and store the result that the promise resolves to in a variable! This is nice!
   console.log(`seeded ${users.length} users`)
@@ -311,10 +319,7 @@ if (module === require.main) {
       console.error(err)
       process.exitCode = 1
     })
-    // .finally(() => {
-    //   // `finally` is like then + catch. It runs no matter what.
 
-    // })
   /*
    * note: everything outside of the async function is totally synchronous
    * The console.log below will occur before any of the logs that occur inside
