@@ -268,8 +268,6 @@ for (let i = 0; i < 150; i++){
   optionArray.push(new CreateOption(adverbs[adverbIndex], verbs[verbIndex], nouns[nounIndex]))
 }
 
-
-
 /**
  * Welcome to the seed file! This seed file uses a newer language feature called...
  *

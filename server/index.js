@@ -1,7 +1,9 @@
 const path = require('path')
 const express = require('express')
 const morgan = require('morgan')
+console.log('in 4 in server index')
 const bodyParser = require('body-parser')
+console.log('in 6 in server index')
 const compression = require('compression')
 const session = require('express-session')
 const passport = require('passport')
@@ -10,7 +12,6 @@ const db = require('./db')
 const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
-const socketio = require('socket.io')
 module.exports = app
 
 /**
@@ -36,9 +37,13 @@ const createApp = () => {
   // logging middleware
   app.use(morgan('dev'))
 
+  console.log('line 38 in server index')
   // body parsing middleware
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({extended: true}))
+
+  console.log('line 45 in server index')
+
 
   // compression middleware
   app.use(compression())
@@ -52,17 +57,22 @@ const createApp = () => {
       saveUninitialized: false
     })
   )
+  console.log('line 60 in server index')
+
   app.use(passport.initialize())
   app.use(passport.session())
 
+  console.log('line 65')
   // auth and api routes
-  app.use('/auth', require('./auth'))
   app.use('/api', require('./api'))
+  console.log('line 68')
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, '..', 'public')))
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
+  console.log('line 71 in server index')
+
   app.use((req, res, next) => {
     if (path.extname(req.path).length) {
       const err = new Error('Not found')
@@ -88,13 +98,9 @@ const createApp = () => {
 
 const startListening = () => {
   // start listening (and create a 'server' object representing our server)
-  const server = app.listen(PORT, () =>
+  app.listen(PORT, () =>
     console.log(`Mixing it up on port ${PORT}`)
   )
-
-  // set up our socket control center
-  const io = socketio(server)
-  require('./socket')(io)
 }
 
 const syncDb = () => db.sync()
