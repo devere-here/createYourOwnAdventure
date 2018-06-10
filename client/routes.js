@@ -19,6 +19,7 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route path="/adventure" component={AdventurePage} />
         <Route path="/login" component={Login} />
         {isLoggedIn && (
           <Switch>

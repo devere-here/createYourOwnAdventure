@@ -3,7 +3,7 @@ function Node(value){
   this.children = []
 }
 
-export default function createTree(arr){
+export default function situationTreeCreator(arr){
 
   let head = new Node(arr.shift()),
     queue = [],
@@ -24,6 +24,3 @@ export default function createTree(arr){
 
   return head
 }
-
-
-
