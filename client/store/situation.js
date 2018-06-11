@@ -30,6 +30,7 @@ export const setIntroSituation = () => dispatch => {
  * REDUCER
  */
 export default function(state = defaultSituation, action) {
+  console.log('in the reducer action.situation is', action.situation)
   switch (action.type) {
     case SET_SITUATION:
       return action.situation
