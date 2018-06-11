@@ -1,5 +1,7 @@
 'use strict'
 
+let { secretSeedOptions, secretSeedSituations } = require('./secretSeedData')
+
 const db = require('../server/db'),
   {User, Option, Situation} = require('../server/db/models')
 
@@ -261,6 +263,11 @@ let situationArray,
   optionArray = []
 
 situationArray = situations.map(situation => new CreateSituation(situation, false))
+secretSeedSituations = secretSeedSituations.map(secretSituation => new CreateSituation(secretSituation, true))
+
+situationArray = situationArray.concat(secretSeedSituations)
+
+
 
 for (let i = 0; i < 150; i++){
   let adverbIndex = Math.floor(Math.random() * 40),
@@ -270,7 +277,13 @@ for (let i = 0; i < 150; i++){
   optionArray.push(new CreateOption(adverbs[adverbIndex], verbs[verbIndex], nouns[nounIndex], false))
 }
 
+secretSeedOptions = secretSeedOptions.map(secretOption => new CreateOption(secretOption, secretOption, secretOption, true))
+
+optionArray = optionArray.concat(secretSeedOptions)
+
+
 /**
+ *
  * Welcome to the seed file! This seed file uses a newer language feature called...
  *
  *                  -=-= ASYNC...AWAIT -=-=
