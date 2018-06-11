@@ -33,10 +33,10 @@ class GuestHome extends Component{
 
 const mapDispatch = (dispatch) => ({
   setUpSituationTree() {
-    dispatch(setIntroSituation())
+    dispatch(setIntroSituation(false))
   },
   setUpOptions() {
-    dispatch(setIntroOptions())
+    dispatch(setIntroOptions(false))
   }
 
 })

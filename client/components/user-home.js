@@ -1,31 +1,45 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import { setIntroOptions, setIntroSituation } from '../store'
+
 
 /**
  * COMPONENT
  */
-export const UserHome = props => {
-  const {email} = props
+class UserHome extends Component {
 
-  return (
+  handleClick = () => {
+    this.props.setUpSituationTree()
+    this.props.setUpOptions()
+    this.props.history.push(`/secretAdventure`)
+  }
+
+  render = () => (
     <div>
-      <h3>Welcome, {email}</h3>
+      <h3>BRBRBRBRBRRBRBRBRBRBRBRBRBBBBBBBBB</h3>
+      <h4>Press the button below to begin your adventure</h4>
+      <button type='submit' onClick={() => this.handleClick()}>Begin Adventure</button>
     </div>
   )
 }
 
 /**
  * CONTAINER
- */
-const mapState = state => {
-  return {
-    email: state.user.email
+**/
+
+const mapDispatch = (dispatch) => ({
+  setUpSituationTree() {
+    dispatch(setIntroSituation(true))
+  },
+  setUpOptions() {
+    dispatch(setIntroOptions(true))
   }
-}
+
+})
 
 
-export default connect(mapState)(UserHome)
+export default connect(null, mapDispatch)(UserHome)
 
 /**
  * PROP TYPES
