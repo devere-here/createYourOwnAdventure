@@ -3,7 +3,11 @@ const Situations = require('../db/models').Situation
 
 
 situationRouter.get('/', (req, res, next) => {
-  Situations.findAll()
+  Situations.findAll({
+    where: {
+      secret: false
+    }
+  })
   .then(data => res.json(data))
   .catch(next)
 })

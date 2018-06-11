@@ -6,6 +6,10 @@ const Option = db.define('option', {
     type: Sequelize.TEXT,
     allowNull: false
   },
+  secret: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  }
 })
 
 module.exports = Option

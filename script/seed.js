@@ -246,26 +246,28 @@ const verbs = ['attach',
   `The shadow is even more confused. It cries because it realizes it lives in a world that it can't possibly understand`
 ]
 
-function CreateSituation(situation) {
+function CreateSituation(situation, secret) {
   this.situation = situation
+  this.secret = secret
 }
 
-function CreateOption(adverb, verb, noun) {
+function CreateOption(adverb, verb, noun, secret) {
   this.option = `${adverb} ${verb} ${noun}`
+  this.secret = secret
 }
 
 
 let situationArray,
   optionArray = []
 
-situationArray = situations.map(situation => new CreateSituation(situation))
+situationArray = situations.map(situation => new CreateSituation(situation, false))
 
 for (let i = 0; i < 150; i++){
   let adverbIndex = Math.floor(Math.random() * 40),
     verbIndex = Math.floor(Math.random() * 40),
     nounIndex = Math.floor(Math.random() * 40)
 
-  optionArray.push(new CreateOption(adverbs[adverbIndex], verbs[verbIndex], nouns[nounIndex]))
+  optionArray.push(new CreateOption(adverbs[adverbIndex], verbs[verbIndex], nouns[nounIndex], false))
 }
 
 /**
