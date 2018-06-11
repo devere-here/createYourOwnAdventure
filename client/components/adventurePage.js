@@ -1,38 +1,32 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import axios from 'axios'
-import situationTreeCreator from '../helperFunctions/situationTreeCreator'
+import getNewOptions from '../store'
 
 
 export class AdventurePage extends Component{
   constructor(props){
     super(props)
-    this.getSituationData()
-    this.getOptionData()
-  }
-
-  getSituationData = () => {
-
-    axios.get('/api/situation')
-    .then(response => {
-      let situationTree = situationTreeCreator(response.data)
-      this.setState({situationTree})
-    })
-
-  }
-
-  getOptionData = () => {
-
-    axios.get('/api/option')
-    .then(response => {
-      this.setState({options: response.data})
-    })
-
   }
 
   render = () => {
-    return (<h1>In Adventure Page</h1>)
+    console.log('props are', this.props)
+    return (
+
+      <div>
+        <h1>In Adventure Page</h1>
+        {this.props.option.length === 0
+        ? null
+        : (
+          <div>
+            <h2>{this.props.situation.value.situation}</h2>
+            <button>{this.props.option[0].option}</button>
+            <button>{this.props.option[1].option}</button>
+            <button>{this.props.option[2].option}</button>
+            <button>{this.props.option[3].option}</button>
+          </div>
+        )}
+      </div>
+    )
   }
 
 }
@@ -40,18 +34,15 @@ export class AdventurePage extends Component{
 /**
  * CONTAINER
  */
-const mapState = state => {
-  return {
-    email: state.user.email
+const mapState = ({situation, option}) => ({
+  situation,
+  option
+})
+
+const mapDispatch = (dispatch) => () => ({
+  nextSituationOptions(){
+    dispatch(getNewOptions())
   }
-}
+})
 
-export default connect(mapState)(AdventurePage)
-
-/**
- * PROP TYPES
- */
-// AdventurePage.propTypes = {
-//   situation: PropTypes.string,
-//   options: PropTypes.string
-// }
+export default connect(mapState, mapDispatch)(AdventurePage)
