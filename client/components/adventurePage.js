@@ -9,27 +9,33 @@ export class AdventurePage extends Component{
   }
 
   handleClick = (num) => {
-    console.log('this.props.situation.children[num]', this.props.situation.children[num])
     this.props.getNextSiutation(this.props.situation.children[num])
     this.props.getNextSituationOptions(this.props.option)
   }
 
   render = () => {
-    console.log('props are', this.props)
+
     return (
 
       <div>
         <h1>In Adventure Page</h1>
-        {this.props.option.length === 0 || Object.keys(this.props.situation).length === 0
+        {console.log('props are', this.props)}
+        {(this.props.option.length === 0) //|| Object.keys(this.props.situation).length === 0) //&& this.props.situation.children.length > 0
         ? null
         : (
           <div>
             <h2>{this.props.situation.value.situation}</h2>
-            <h2>What do you do?</h2>
-            <button onClick={() => this.handleClick(0)}>{this.props.option[0].option}</button>
-            <button onClick={() => this.handleClick(1)}>{this.props.option[1].option}</button>
-            <button onClick={() => this.handleClick(2)}>{this.props.option[2].option}</button>
-            <button onClick={() => this.handleClick(3)}>{this.props.option[3].option}</button>
+            {this.props.situation.children.length === 0
+            ? null
+            : (
+              <div>
+                <h2>What do you do?</h2>
+                <button onClick={() => this.handleClick(0)}>{this.props.option[0].option}</button>
+                <button onClick={() => this.handleClick(1)}>{this.props.option[1].option}</button>
+                <button onClick={() => this.handleClick(2)}>{this.props.option[2].option}</button>
+                <button onClick={() => this.handleClick(3)}>{this.props.option[3].option}</button>
+              </div>
+            )}
           </div>
         )}
       </div>
