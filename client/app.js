@@ -1,10 +1,11 @@
 import React from 'react'
+import './style/app.css'
 
 import Routes from './routes'
 
 const App = () => {
   return (
-    <div>
+    <div id='container'>
       <Routes />
     </div>
   )

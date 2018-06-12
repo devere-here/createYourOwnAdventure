@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getNewOptions, setSituation } from '../store'
-import styles from '../style/app.css'
+import '../style/adventurePage.css'
 
 
 export class AdventurePage extends Component{
@@ -17,23 +17,24 @@ export class AdventurePage extends Component{
   render = () => {
 
     return (
-      <div>
-        <h1 className='element'>In Adventure Page</h1>
+      <div id='container'>
         {console.log('props are', this.props)}
         {(this.props.option.length === 0)
         ? null
         : (
-          <div>
-            <h2>{this.props.situation.value.situation}</h2>
+          <div id='textBox'>
+            <h2 className='element'>{this.props.situation.value.situation}</h2>
             {this.props.situation.children.length === 0
-            ? null
+            ? <button onClick={() => this.props.history.push('/')}>Return To Home Page</button>
             : (
               <div>
                 <h2>What do you do?</h2>
-                <button onClick={() => this.handleClick(0)}>{this.props.option[0].option}</button>
-                <button onClick={() => this.handleClick(1)}>{this.props.option[1].option}</button>
-                <button onClick={() => this.handleClick(2)}>{this.props.option[2].option}</button>
-                <button onClick={() => this.handleClick(3)}>{this.props.option[3].option}</button>
+                <div id='buttonContainer'>
+                  <button onClick={() => this.handleClick(0)}>{this.props.option[0].option}</button>
+                  <button onClick={() => this.handleClick(1)}>{this.props.option[1].option}</button>
+                  <button onClick={() => this.handleClick(2)}>{this.props.option[2].option}</button>
+                  <button onClick={() => this.handleClick(3)}>{this.props.option[3].option}</button>
+                </div>
               </div>
             )}
           </div>
