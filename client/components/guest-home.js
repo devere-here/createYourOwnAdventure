@@ -8,6 +8,7 @@ import { setIntroOptions, setIntroSituation } from '../store'
 class GuestHome extends Component{
   constructor(props){
     super(props)
+    console.log('in guest home')
   }
 
   handleClick = () => {

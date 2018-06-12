@@ -21,14 +21,17 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/adventure" component={AdventurePage} />
         <Route path="/login" component={Login} />
-        {isLoggedIn && (
+        {!isLoggedIn
+          ? null
+          : (
           <Switch>
             {/* Routes placed here are only available after logging in */}
-            <Route path="/home" component={SecretHome} />
+            <Route path="/homer" component={UserHome} />
             <Route path="/adventure" component={AdventurePage} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
+        {console.log('isLogged is', isLoggedIn)}
         <Route component={GuestHome} />
       </Switch>
     )

@@ -7,4 +7,4 @@ export {default as Navbar} from './navbar'
 export {default as UserHome} from './user-home'
 export {default as AdventurePage} from './adventurePage'
 export {default as GuestHome} from './guest-home'
-
+export { Login, Signup } from './auth-form'

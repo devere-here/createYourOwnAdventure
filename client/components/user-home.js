@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { setIntroOptions, setIntroSituation } from '../store'
@@ -8,6 +8,10 @@ import { setIntroOptions, setIntroSituation } from '../store'
  * COMPONENT
  */
 class UserHome extends Component {
+  constructor(props){
+    super(props)
+    console.log('in user home')
+  }
 
   handleClick = () => {
     this.props.setUpSituationTree()
