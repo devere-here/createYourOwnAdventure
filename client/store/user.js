@@ -27,13 +27,15 @@ export const me = () => dispatch =>
     .then(res => dispatch(getUser(res.data || defaultUser)))
     .catch(err => console.log(err))
 
-export const auth = (email, password, method) => dispatch =>
+export const auth = (email, password, method) => dispatch => {
+  console.log('in auth')
   axios
     .post(`/auth/${method}`, {email, password})
     .then(
       res => {
-        dispatch(getUser(res.data))
-        history.push('/home')
+        console.log('about to dispatch res.data is', res.data)
+        dispatch(getUser({email: 'cody@gmail.com', id: 1}))
+        history.push('/homer')
       },
       authError => {
         // rare example: a good use case for parallel (non-catch) error handler
@@ -41,6 +43,8 @@ export const auth = (email, password, method) => dispatch =>
       }
     )
     .catch(dispatchOrHistoryErr => console.error(dispatchOrHistoryErr))
+
+  }
 
 export const logout = () => dispatch =>
   axios

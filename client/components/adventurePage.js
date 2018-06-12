@@ -54,7 +54,7 @@ const mapState = ({situation, option}) => ({
 
 const mapDispatch = (dispatch) => () => ({
   getNextSituationOptions(options){
-    dispatch(getNewOptions(options))
+    dispatch(getNewOptions(options, 4))
   },
   getNextSiutation(situation){
     dispatch(setSituation(situation))

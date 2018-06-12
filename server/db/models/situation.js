@@ -6,6 +6,10 @@ const Situation = db.define('situation', {
     type: Sequelize.TEXT,
     allowNull: false
   },
+  secret: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false
+  }
 })
 
 module.exports = Situation

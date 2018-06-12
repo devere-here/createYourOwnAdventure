@@ -8,6 +8,7 @@ import { setIntroOptions, setIntroSituation } from '../store'
 class GuestHome extends Component{
   constructor(props){
     super(props)
+    console.log('in guest home')
   }
 
   handleClick = () => {
@@ -33,10 +34,10 @@ class GuestHome extends Component{
 
 const mapDispatch = (dispatch) => ({
   setUpSituationTree() {
-    dispatch(setIntroSituation())
+    dispatch(setIntroSituation(false))
   },
   setUpOptions() {
-    dispatch(setIntroOptions())
+    dispatch(setIntroOptions(false))
   }
 
 })

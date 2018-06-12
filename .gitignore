@@ -5,3 +5,9 @@ secrets.js
 .DS_Store
 npm-debug.log
 yarn-error.log
+
+server/api/secretOption.js
+server/api/secretSituation.js
+script/secretSeedData.js
+client/components/user-home.js
+client/components/secretAdventurePage.js

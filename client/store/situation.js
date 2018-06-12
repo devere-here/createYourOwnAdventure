@@ -1,5 +1,6 @@
 import axios from 'axios'
 import situationTreeCreator from '../helperFunctions/situationTreeCreator'
+import { secretSituationRoute } from '../../secrets.js'
 
 /**
  * ACTION TYPES
@@ -20,11 +21,14 @@ export const setSituation = situation => ({type: SET_SITUATION, situation})
  * THUNK CREATORS
  */
 
-export const setIntroSituation = () => dispatch => {
-  axios.get('/api/situation')
+export const setIntroSituation = secret => dispatch => {
+  let path = secret ? secretSituationRoute : '/api/situation'
+  axios.get(path)
   .then(response => situationTreeCreator(response.data))
   .then(situationTree => dispatch(setSituation(situationTree)))
 }
+
+
 
 /**
  * REDUCER
