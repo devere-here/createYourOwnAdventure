@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getNewOptions, setSituation } from '../store'
+import styles from '../style/app.css'
 
 
 export class AdventurePage extends Component{
@@ -16,11 +17,10 @@ export class AdventurePage extends Component{
   render = () => {
 
     return (
-
       <div>
-        <h1>In Adventure Page</h1>
+        <h1 className='element'>In Adventure Page</h1>
         {console.log('props are', this.props)}
-        {(this.props.option.length === 0) //|| Object.keys(this.props.situation).length === 0) //&& this.props.situation.children.length > 0
+        {(this.props.option.length === 0)
         ? null
         : (
           <div>
