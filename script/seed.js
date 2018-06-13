@@ -248,6 +248,25 @@ const verbs = ['attach',
   `The shadow is even more confused. It cries because it realizes it lives in a world that it can't possibly understand`
 ]
 
+// const images = [
+//   'https://img00.deviantart.net/3d99/i/2010/133/2/4/dark_field_by_dreamca7cher.png',
+
+//   'https://images.techhive.com/images/article/2016/10/scary-mac-limbo3-100689862-orig.jpg',
+//   'https://ak6.picdn.net/shutterstock/videos/12149396/thumb/1.jpg',
+//   'https://c1.staticflickr.com/5/4048/4692663232_d8a32c62fe_b.jpg',
+//   'https://imgix.bustle.com/rehost/2016/9/13/809bfbc3-bc7a-41b7-b68c-fa126a8896c1.jpg?w=970&h=582&fit=crop&crop=faces&auto=format&q=70',
+
+//   'https://imgix.bustle.com/rehost/2016/9/13/809bfbc3-bc7a-41b7-b68c-fa126a8896c1.jpg?w=970&h=582&fit=crop&crop=faces&auto=format&q=70',
+//   'https://imgix.bustle.com/rehost/2016/9/13/809bfbc3-bc7a-41b7-b68c-fa126a8896c1.jpg?w=970&h=582&fit=crop&crop=faces&auto=format&q=70',
+//   'https://img00.deviantart.net/49f9/i/2012/114/1/1/dark_field_by_fuguestock-d4xekbx.jpg',
+//   'http://s3.amazonaws.com/everystockphoto/fspid31/23/54/25/9/dailyshoot-leaf-shadow-2354259-o.jpg',
+
+
+//   'https://images.techhive.com/images/article/2016/10/scary-mac-limbo3-100689862-orig.jpg',
+
+
+// ]
+
 function CreateSituation(situation, secret) {
   this.situation = situation
   this.secret = secret

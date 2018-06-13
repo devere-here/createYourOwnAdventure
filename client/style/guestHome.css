@@ -1,0 +1,54 @@
+#ghContainer {
+  height: 100%;
+  width: 100%;
+  background-color: #FFD700;
+  position: relative;
+}
+
+#ghTextBox {
+  background-color: white;
+  border: 10px solid #006400;
+  border-radius: 25px;
+  height: 50%;
+  width: 70%;
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  text-align: center;
+  /* transform: translateY(-50%); */
+}
+
+#ghButtonContainer {
+  display: flex;
+  justify-content: center;
+  width: 85%;
+  margin: 50px auto 50px auto;
+}
+
+button {
+  margin: 5px;
+  width: 22%;
+  height: 60px;
+  border-radius: 5px;
+  font-size: 22px;
+  padding: 6px 2px;
+}
+
+.spooky {
+  color: white;
+  background-color: purple;
+}
+
+.comingSoon {
+  color: white;
+  background-color: red;
+}
+
+.ghH1 {
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+.ghH2 {
+  font-size: 30px;
+}

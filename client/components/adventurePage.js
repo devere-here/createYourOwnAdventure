@@ -24,17 +24,15 @@ export class AdventurePage extends Component{
           <div id='textBox'>
             <h1 id='situation'>{`${this.props.situation.value.situation} ${bool ? '' : 'What do you do?'}`}</h1>
             {bool
-            ? <button onClick={() => this.props.history.push('/')}>Return To Home Page</button>
+            ? <button className='apSpookyButton returnHomeButton' onClick={() => this.props.history.push('/')}>Return To Home Page</button>
             : (
-              <div>
-                <div id='buttonContainer'>
+                <div id='apButtonContainer'>
                   {
                     indices.map((elem, idx) => (
-                      <button onClick={() => this.handleClick(indices[elem])}>{this.props.option[idx].option}</button>
+                      <button className='apSpookyButton' onClick={() => this.handleClick(indices[elem])}>{this.props.option[idx].option}</button>
                     ))
                   }
                 </div>
-              </div>
             )}
           </div>
         )}

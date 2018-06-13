@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { setIntroOptions, setIntroSituation } from '../store'
 
+import '../style/guestHome.css'
+
 /**
  * COMPONENT
  */
@@ -19,10 +21,16 @@ class GuestHome extends Component{
 
   render = () => {
     return (
-      <div>
-        <h3>Welcome Guest</h3>
-        <h4>Press the button below to begin your adventure</h4>
-        <button type='submit' onClick={() => this.handleClick()}>Begin Adventure</button>
+      <div id='ghContainer'>
+        <div id='ghTextBox'>
+          <h1 className='ghH1'>Choose Your Own Adventure</h1>
+          <h2 className='ghH2'>Press a button below to begin your adventure</h2>
+          <div id='ghButtonContainer'>
+            <button type='submit' className='spooky' onClick={() => this.handleClick()}>Spooky Adventure</button>
+            <button type='submit' className='comingSoon'>More adventures coming soon.</button>
+          </div>
+          <p>Email me at stevendeverehere@gmail.com if you have any suggestions for a new adventure story</p>
+        </div>
       </div>
     )
   }
