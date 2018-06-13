@@ -1,13 +1,11 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import { getNewOptions, setSituation } from '../store'
+import randomizeOptions from '../helperFunctions/randomizeOptions.js'
 import '../style/adventurePage.css'
 
 
 export class AdventurePage extends Component{
-  constructor(props){
-    super(props)
-  }
 
   handleClick = (num) => {
     this.props.getNextSiutation(this.props.situation.children[num])
@@ -15,25 +13,26 @@ export class AdventurePage extends Component{
   }
 
   render = () => {
+    let indices = randomizeOptions([0, 1, 2, 3]),
+      bool = this.props.situation.children && this.props.situation.children.length === 0
 
     return (
       <div id='container'>
-        {console.log('props are', this.props)}
         {(this.props.option.length === 0)
         ? null
         : (
           <div id='textBox'>
-            <h2 className='element'>{this.props.situation.value.situation}</h2>
-            {this.props.situation.children.length === 0
+            <h1 id='situation'>{`${this.props.situation.value.situation} ${bool ? '' : 'What do you do?'}`}</h1>
+            {bool
             ? <button onClick={() => this.props.history.push('/')}>Return To Home Page</button>
             : (
               <div>
-                <h2>What do you do?</h2>
                 <div id='buttonContainer'>
-                  <button onClick={() => this.handleClick(0)}>{this.props.option[0].option}</button>
-                  <button onClick={() => this.handleClick(1)}>{this.props.option[1].option}</button>
-                  <button onClick={() => this.handleClick(2)}>{this.props.option[2].option}</button>
-                  <button onClick={() => this.handleClick(3)}>{this.props.option[3].option}</button>
+                  {
+                    indices.map((elem, idx) => (
+                      <button onClick={() => this.handleClick(indices[elem])}>{this.props.option[idx].option}</button>
+                    ))
+                  }
                 </div>
               </div>
             )}

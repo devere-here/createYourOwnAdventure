@@ -1,36 +1,45 @@
 #container {
-  /* background-color: black; */
   height: 100%;
   width: 100%;
-  background-image: url('https://img00.deviantart.net/3d99/i/2010/133/2/4/dark_field_by_dreamca7cher.png');
-  background-size: cover;
+  background-color: gray;
+  position: relative;
 }
 
 #textBox {
-  background-color: #9932CC;
-  border: 4px solid #4B0082;
-  border-radius: 10px;
-  color: white;
-  height: 70%;
-  width: 80%;
-  margin: 0 auto;
+  background-color: white;
+  border: 10px solid indigo;
+  border-radius: 25px;
+  color: black;
+  height: 50%;
+  width: 70%;
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  /* transform: translateY(-50%); */
 }
 
 #buttonContainer {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-
+  width: 85%;
+  margin: 150px auto 0px auto;
 }
 
 #buttonContainer button {
   margin: 5px;
-  width: 25%;
-  height: 50px;
-  border: 2px indigo solid;
+  width: 30%;
+  height: 70px;
   border-radius: 5px;
   font-size: 22px;
   padding: 6px 2px;
+  color: white;
+  background-color: black;
+}
+
+#situation {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  margin: 50px;
 }
 
