@@ -1,0 +1,58 @@
+#container {
+  height: 100%;
+  width: 100%;
+  background-color: gray;
+  position: relative;
+}
+
+#textBox {
+  background-color: white;
+  border: 10px solid indigo;
+  border-radius: 25px;
+  color: black;
+  height: 50%;
+  width: 70%;
+  position: absolute;
+  top: 25%;
+  left: 15%;
+  /* transform: translateY(-50%); */
+}
+
+#apFlexBox {
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: 150px auto 0px auto;
+}
+
+#apButtonContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+  margin: 100px auto 0px auto;
+}
+
+.apSpookyButton {
+  margin: 5px;
+  width: 25%;
+  height: 70px;
+  border-radius: 5px;
+  font-size: 22px;
+  padding: 6px 2px;
+  color: white;
+  background-color: black;
+}
+
+.returnHomeButton {
+  position: relative;
+  left: 37.5%;
+}
+
+#situation {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  margin: 60px;
+}
+
