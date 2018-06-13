@@ -8,10 +8,6 @@ import '../style/guestHome.css'
  * COMPONENT
  */
 class GuestHome extends Component{
-  constructor(props){
-    super(props)
-    console.log('in guest home')
-  }
 
   handleClick = () => {
     this.props.setUpSituationTree()

@@ -20,6 +20,7 @@ export default function situationTreeCreator(arr, numberOfChildren = 4){
       }
     })
     queue = newQueue
+    newQueue = []
   }
 
   return head
