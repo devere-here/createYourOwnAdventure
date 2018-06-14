@@ -14,20 +14,21 @@ export class AdventurePage extends Component{
 
   render = () => {
     let indices = randomizeOptions([0, 1, 2, 3]),
-      bool = this.props.situation.children && this.props.situation.children.length === 0
+      { situation, option, history } = this.props,
+      bool = situation.children && situation.children.length === 0
 
     return (
       <div id='container'>
-        {(this.props.option.length === 0)
+        {(option.length === 0 || situation.value === undefined)
         ? null
         : (
           <div id='textBox'>
-            <h1 id='situation'>{`${this.props.situation.value.situation} ${bool ? '' : 'What do you do?'}`}</h1>
+            <h1 id='situation'>{`${situation.value.situation} ${bool ? '' : 'What do you do?'}`}</h1>
             {bool
             ? <button
                 type='submit'
                 className='apSpookyButton returnHomeButton'
-                onClick={() => this.props.history.push('/')}
+                onClick={() => history.push('/')}
               >
                 Return To Home Page
               </button>
@@ -41,7 +42,7 @@ export class AdventurePage extends Component{
                         className='apSpookyButton'
                         onClick={() => this.handleClick(indices[elem])}
                       >
-                        {this.props.option[idx].option}
+                        {option[idx].option}
                       </button>
                     ))
                   }
@@ -52,7 +53,6 @@ export class AdventurePage extends Component{
       </div>
     )
   }
-
 }
 
 /**
@@ -70,7 +70,6 @@ const mapDispatch = (dispatch) => () => ({
   getNextSiutation(situation){
     dispatch(setSituation(situation))
   }
-
 })
 
 export default connect(mapState, mapDispatch)(AdventurePage)
